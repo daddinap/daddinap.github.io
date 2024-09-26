@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Profile</title>
+    <script>
+      function addData() {
+        // Get the form data
+        var name = document.querySelector('input[name="name"]').value;
+        var birthday = document.querySelector('input[name="birthday"]').value;
+        var address = document.querySelector('input[name="address"]').value;
+        var contact = document.querySelector('input[name="contact"]').value;
+        var email = document.querySelector('input[name="email"]').value;
+        var age = document.querySelector('input[name="age"]').value;
+
+        // Validate if all fields are filled
+        if (!name || !birthday || !address || !contact || !email || !age) {
+          alert("Please fill out all fields.");
+          return;
+        }
+
+        // Create a new table row
+        var table = document.getElementById("data-table");
+        var row = table.insertRow();
+
+        // Insert cells into the row
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+
+        // Fill the cells with form data
+        cell1.innerHTML = name;
+        cell2.innerHTML = birthday;
+        cell3.innerHTML = address;
+        cell4.innerHTML = contact;
+        cell5.innerHTML = email;
+        cell6.innerHTML = age;
+
+        // Create delete button for the row
+        cell7.innerHTML =
+          "<button style='background-color: red; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;' onclick='deleteRow(this)'>Delete</button>";
+      }
+
+      function deleteRow(button) {
+        // Find the row containing the clicked delete button and remove it
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+    </script>
+  </head>
+  <style>
+    table {
+      width: 100%; /* Make the table take the full width of the container */
+    }
+    th,
+    tr,
+    table {
+      border: 2px gray;
+      border-style: groove;
+      border-collapse: collapse;
+      margin: auto;
+      text-align: center;
+      background-color: white;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    h3 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    div {
+      box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      width: 600px;
+      margin: 30px auto;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      background-color: blanchedalmond;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1>Add Profile</h1>
+    <p style="padding-left: 9cm">
+      Kindly fill out all the necesarry details below.
+    </p>
+    <!-- Form enclosed in a box -->
+    <div>
+      <h3>Name:</h3>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter full name"
+        style="width: 575px; padding: 10px"
+      />
+
+      <h3>Birthday:</h3>
+      <input type="date" name="birthday" style="width: 575px; padding: 10px" />
+
+      <h3>Address:</h3>
+      <input
+        type="text"
+        name="address"
+        placeholder="Enter address"
+        style="width: 575px; padding: 10px"
+      />
+
+      <h3>Contact Information:</h3>
+      <input
+        type="text"
+        name="contact"
+        placeholder="Enter contact number"
+        style="width: 575px; padding: 10px"
+      />
+
+      <h3>Email:</h3>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter email"
+        style="width: 575px; padding: 10px"
+      />
+
+      <h3>Age:</h3>
+      <input
+        type="number"
+        name="age"
+        placeholder="Enter age"
+        style="width: 575px; padding: 10px"
+      />
+
+      <br /><br />
+      <!-- Button to add data to the table -->
+      <button
+        type="button"
+        onclick="addData()"
+        style="
+          background: #0c7911;
+          color: bisque;
+          width: 600px;
+          padding: 10px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif;
+          font-size: large;
+          font-weight: 600;
+        "
+      >
+        Add to Table
+      </button>
+    </div>
+
+    <!-- Table to display the collected data -->
+    <h3 style="padding-left: 30px">Data Table:</h3>
+    <table id="data-table" border="1">
+      <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Address</th>
+        <th>Contact Information</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </table>
+  </body>
+</html>
